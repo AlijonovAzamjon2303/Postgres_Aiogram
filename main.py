@@ -46,7 +46,7 @@ def init_db():
 init_db()
 
 # Bot token
-BOT_TOKEN = "7233075659:AAFDQLicBx8aPaYayQ34RWsmkBHFaZSYhwM"
+BOT_TOKEN = "Token"
 
 # Initialize bot and dispatcher
 bot = Bot(token=BOT_TOKEN)
@@ -71,7 +71,7 @@ async def myinfo_handler(message: Message):
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT first_name, last_name FROM users WHERE user_id = %s", (message.from_user.id,))
+    cursor.execute(f"SELECT first_name, last_name FROM users WHERE user_id = {message.from_user.id}")
     user_data = cursor.fetchone()
 
     cursor.close()
